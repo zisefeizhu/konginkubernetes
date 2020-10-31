@@ -13,7 +13,7 @@ metadata:
     # Use NLB over ELB
 
     ## ALIYUN SLB
-    # service.beta.kubernetes.io/alibaba-cloud-loadbalancer-id: lb-wz9nc7r25b64p97r2gpke
+    # service.beta.kubernetes.io/alibaba-cloud-loadbalancer-id: lb-wxxxxxxxpke
     # service.beta.kubernetes.io/alicloud-loadbalancer-address-type: internet
 
     # service.beta.kubernetes.io/aws-load-balancer-type: nlb
