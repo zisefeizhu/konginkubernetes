@@ -1,0 +1,56 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: test-app-server
+  annotations:
+    kubernetes.io/ingress.class: "kong"
+    konghq.com/plugins: request-uri-pass-auth,my-custom-plugin,forward-auth-request
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /test/
+        backend:
+          serviceName: test-app-server
+          servicePort: 8000
+      - path: /open/
+        backend:
+          serviceName: test-app-server
+          servicePort: 8000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: test-app-server
+    labels:
+        name: test-app-server
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            name: test-app-server
+    template:
+        metadata:
+            labels:
+                name: test-app-server
+        spec:
+            containers:
+                - name: test-app-server
+                  image: kong-test-app
+                  imagePullPolicy: IfNotPresent
+                  ports:
+                    - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: test-app-server
+spec:
+    ports:
+        - name: http
+          port: 8000
+          protocol: TCP
+          targetPort: 8080
+    selector:
+        name: test-app-server
+---

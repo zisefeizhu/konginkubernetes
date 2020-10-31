@@ -1,0 +1,33 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: forward-auth-request
+  namespace: realibox
+config:
+  prefixs:
+    - "get/api/cms/api/v4/scenes/[0-9a-z]+/public/info"
+    - "all/api/plugins/3d%-atlas/"
+    - "get/api/cms/api/v4/share"
+    - "all/api/cms/api/cms/v1/project/visit_records"
+    - "all/api/cms/api/v4/production/"
+    - "get/api/cms/api/ui_editor/v1/applications/publish"
+    - "get/api/cms/api/v4/scenes/publish/[0-9a-z]+"
+    - "get/api/cms/api/v4/scenes/public/[0-9a-z]+"
+    - "all/api/cms/api/operation/"
+    - "all/api/cms/api/admin/"
+    - "all/api/cms/api/app/"
+    - "all/api/cms/api/content/"
+    - "all/api/open/api/v1/manage/"
+    - "all/api/open/api/dev/"
+    - "post/api/open/api/v1/oss_callback"
+    - "get/api/asset/api/scene/[0-9a-z]+/publish"
+    - "get/api/asset/api/project/[0-9a-z]+/publish"
+    - "post/api/cms/api/v4/oss_callback"
+    - "post/api/cms/api/ui_editor/v1/oss_callback"
+    - "post/api/cms/api/v4/cloud_callback"
+    - "post/api/cms/api/v4/cloud_callback/publish"
+    - "all/api/cms/api/client/"
+    - "all/api/order/api/admin/"
+    - "all/api/package/api/admin/"
+    - "all/api/asset/api/callback/"
+plugin: forward-auth-request
